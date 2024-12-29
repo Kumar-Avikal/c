@@ -19,7 +19,7 @@ private:
     int time = 90000000;
 
 public:
-    Board() : grid(20, vector<char>(20, ' ')), direction('d')
+    Board() : grid(20, vector<char>(20, ' ')), direction('d'), score(0)
     {
         headPosition.first = 10;
         headPosition.second = 10;
@@ -44,6 +44,10 @@ public:
         generatedNumbers.insert(randomNumber);
         return randomNumber;
     }
+    void clearScreen()
+    {
+        cout << "\033[H"; // Move cursor to top-left
+    }
 
     void generateFood()
     {
@@ -55,6 +59,7 @@ public:
     void showBoard()
     {
         system("cls");
+        // clearScreen();
         for (int i = 0; i < 20; i++)
         {
             for (int j = 0; j < 20; j++)
